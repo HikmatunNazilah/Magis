@@ -1,13 +1,13 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 // Configuration for Database Connection
-$host = "103.30.147.68";
-$username = "sekelikn_magis_usr";
-$password = "[]pl--Xt3)0-!WP[";
-$database = "sekelikn_magis_db";
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASSWORD');
+$db   = getenv('DB_NAME');
+$port = getenv('DB_PORT');
 
-// Create Connection
-$conn = new mysqli($host, $username, $password, $database);
+$conn = new mysqli($host, $user, $pass, $db, $port);
 
 // Check Connection
 if ($conn->connect_error) {
