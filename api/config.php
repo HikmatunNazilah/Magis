@@ -19,18 +19,19 @@ class DatabaseSessionHandler implements SessionHandlerInterface {
     }
     public function close(): bool { return true; }
     public function read($id): string|false {
-        $stmt = $this->mysqli->prepare("SELECT data FROM sessions WHERE id = ? AND expires > UNIX_TIMESTAMP()");
+        $stmt = $this->mysqli->prepare("SELECT payload FROM sessions WHERE id = ?");
         $stmt->bind_param("s", $id);
         if ($stmt->execute()) {
             $result = $stmt->get_result();
-            if ($row = $result->fetch_assoc()) return $row['data'];
+            if ($row = $result->fetch_assoc()) return base64_decode($row['payload']);
         }
         return "";
     }
     public function write($id, $data): bool {
-        $expires = time() + (int)ini_get('session.gc_maxlifetime');
-        $stmt = $this->mysqli->prepare("REPLACE INTO sessions (id, data, expires) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssi", $id, $data, $expires);
+        $last_activity = time();
+        $payload = base64_encode($data);
+        $stmt = $this->mysqli->prepare("REPLACE INTO sessions (id, payload, last_activity) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssi", $id, $payload, $last_activity);
         return $stmt->execute();
     }
     public function destroy($id): bool {
@@ -39,7 +40,9 @@ class DatabaseSessionHandler implements SessionHandlerInterface {
         return $stmt->execute();
     }
     public function gc($maxlifetime): int|false {
-        $stmt = $this->mysqli->prepare("DELETE FROM sessions WHERE expires < UNIX_TIMESTAMP()");
+        $limit = time() - $maxlifetime;
+        $stmt = $this->mysqli->prepare("DELETE FROM sessions WHERE last_activity < ?");
+        $stmt->bind_param("i", $limit);
         if ($stmt->execute()) return $this->mysqli->affected_rows;
         return false;
     }
