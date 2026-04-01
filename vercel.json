@@ -1,9 +1,15 @@
 {
-  "builds": [
-    { "src": "*.php", "use": "vercel-php@0.7.2" },
-    { "src": "api/**/*.php", "use": "vercel-php@0.7.2" }
-  ],
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.7.2"
+    }
+  },
   "routes": [
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/image/(.*)", "dest": "/image/$1" },
+    { "src": "/libs/(.*)", "dest": "/libs/$1" },
+    { "src": "/uploads/(.*)", "dest": "/uploads/$1" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*).php", "dest": "/api/$1.php" },
+    { "src": "/(.*)", "dest": "/api/$1" }
   ]
 }
