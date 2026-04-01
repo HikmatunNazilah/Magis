@@ -1,5 +1,5 @@
 <?php
-require_once '../config.php';
+require_once 'config.php';
 
 header('Content-Type: application/json');
 
@@ -25,7 +25,7 @@ $expires_at = date('Y-m-d H:i:s', strtotime('+15 minutes'));
 $sql = "INSERT INTO Password_Resets (email, code, expires_at) VALUES ('$email', '$code', '$expires_at')";
 
 // 4. Send Email via Real SMTP
-require_once '../config-mail.php';
+require_once 'config-mail.php';
 require_once '../libs/SmtpMailer.php';
 
 $subject = "Kode Verifikasi Reset Password - MAGIS";
