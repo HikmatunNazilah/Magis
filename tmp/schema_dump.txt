@@ -1,0 +1,185 @@
+--- berkas_pendaftaran ---
+id_berkas | bigint(20) unsigned | NO | PRI |  | auto_increment
+pendaftaran_id | bigint(20) unsigned | NO | MUL |  | 
+jenis_berkas | varchar(100) | NO |  |  | 
+file_path | varchar(255) | NO |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- cache ---
+key | varchar(255) | NO | PRI |  | 
+value | mediumtext | NO |  |  | 
+expiration | int(11) | NO | MUL |  | 
+
+--- cache_locks ---
+key | varchar(255) | NO | PRI |  | 
+owner | varchar(255) | NO |  |  | 
+expiration | int(11) | NO | MUL |  | 
+
+--- failed_jobs ---
+id | bigint(20) unsigned | NO | PRI |  | auto_increment
+uuid | varchar(255) | NO | UNI |  | 
+connection | text | NO |  |  | 
+queue | text | NO |  |  | 
+payload | longtext | NO |  |  | 
+exception | longtext | NO |  |  | 
+failed_at | timestamp | NO |  | current_timestamp() | 
+
+--- job_batches ---
+id | varchar(255) | NO | PRI |  | 
+name | varchar(255) | NO |  |  | 
+total_jobs | int(11) | NO |  |  | 
+pending_jobs | int(11) | NO |  |  | 
+failed_jobs | int(11) | NO |  |  | 
+failed_job_ids | longtext | NO |  |  | 
+options | mediumtext | YES |  |  | 
+cancelled_at | int(11) | YES |  |  | 
+created_at | int(11) | NO |  |  | 
+finished_at | int(11) | YES |  |  | 
+
+--- jobs ---
+id | bigint(20) unsigned | NO | PRI |  | auto_increment
+queue | varchar(255) | NO | MUL |  | 
+payload | longtext | NO |  |  | 
+attempts | tinyint(3) unsigned | NO |  |  | 
+reserved_at | int(10) unsigned | YES |  |  | 
+available_at | int(10) unsigned | NO |  |  | 
+created_at | int(10) unsigned | NO |  |  | 
+
+--- logbook ---
+id_logbook | bigint(20) unsigned | NO | PRI |  | auto_increment
+mahasiswa_id | bigint(20) unsigned | NO | MUL |  | 
+tanggal | date | NO |  |  | 
+kegiatan | text | NO |  |  | 
+bukti_file | varchar(255) | YES |  |  | 
+status_validasi | enum('pending','disetujui','ditolak') | NO |  | pending | 
+catatan_mentor | text | YES |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- mahasiswa ---
+id_mahasiswa | bigint(20) unsigned | NO | PRI |  | auto_increment
+user_id | bigint(20) unsigned | NO | MUL |  | 
+nim | varchar(50) | NO |  |  | 
+universitas | varchar(255) | YES |  |  | 
+jurusan | varchar(255) | YES |  |  | 
+no_telepon | varchar(20) | YES |  |  | 
+alamat | text | YES |  |  | 
+mentor_id | bigint(20) unsigned | YES | MUL |  | 
+periode_id | bigint(20) unsigned | YES | MUL |  | 
+status | enum('pending','aktif','ditolak','selesai') | NO |  | pending | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+cv_path | varchar(255) | YES |  |  | 
+transkrip_path | varchar(255) | YES |  |  | 
+surat_path | varchar(255) | YES |  |  | 
+proposal_path | varchar(255) | YES |  |  | 
+
+--- mentor ---
+id_mentor | bigint(20) unsigned | NO | PRI |  | auto_increment
+user_id | bigint(20) unsigned | NO | MUL |  | 
+jabatan | varchar(255) | YES |  |  | 
+no_telepon | varchar(20) | YES |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- migrations ---
+id | int(10) unsigned | NO | PRI |  | auto_increment
+migration | varchar(255) | NO |  |  | 
+batch | int(11) | NO |  |  | 
+
+--- password_reset_tokens ---
+email | varchar(255) | NO | PRI |  | 
+token | varchar(255) | NO |  |  | 
+created_at | timestamp | YES |  |  | 
+
+--- pendaftaran ---
+id_pendaftaran | bigint(20) unsigned | NO | PRI |  | auto_increment
+mahasiswa_id | bigint(20) unsigned | NO | MUL |  | 
+periode_id | bigint(20) unsigned | NO | MUL |  | 
+tanggal_daftar | date | NO |  |  | 
+status | enum('pending','diterima','ditolak','selesai') | NO |  | pending | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- penilaian ---
+id_penilaian | bigint(20) unsigned | NO | PRI |  | auto_increment
+mahasiswa_id | bigint(20) unsigned | NO | MUL |  | 
+mentor_id | bigint(20) unsigned | NO | MUL |  | 
+nilai_analisis | int(11) | YES |  |  | 
+nilai_komunikasi | int(11) | YES |  |  | 
+nilai_kerjasama | int(11) | YES |  |  | 
+nilai_disiplin | int(11) | YES |  |  | 
+nilai_akhir | double | YES |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- periode_magang ---
+id_periode | bigint(20) unsigned | NO | PRI |  | auto_increment
+nama_periode | varchar(255) | NO |  |  | 
+tanggal_mulai | date | NO |  |  | 
+tanggal_selesai | date | NO |  |  | 
+kuota | int(11) | NO |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- presensi ---
+id_presensi | bigint(20) unsigned | NO | PRI |  | auto_increment
+mahasiswa_id | bigint(20) unsigned | NO | MUL |  | 
+tanggal | date | NO |  |  | 
+jam_masuk | time | YES |  |  | 
+jam_keluar | time | YES |  |  | 
+foto_selfie | varchar(255) | YES |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+
+--- sertifikat ---
+id_sertifikat | bigint(20) unsigned | NO | PRI |  | auto_increment
+mahasiswa_id | bigint(20) unsigned | NO | MUL |  | 
+nomor_sertifikat | varchar(100) | NO | UNI |  | 
+tanggal_terbit | date | NO |  |  | 
+file_sertifikat | varchar(255) | NO |  |  | 
+qr_code | varchar(255) | YES |  |  | 
+created_by | int(11) | YES |  |  | 
+created_at | datetime | YES |  | current_timestamp() | 
+updated_by | int(11) | YES |  |  | 
+updated_at | datetime | YES |  |  | on update current_timestamp()
+
+--- sessions ---
+id | varchar(255) | NO | PRI |  | 
+user_id | bigint(20) unsigned | YES | MUL |  | 
+ip_address | varchar(45) | YES |  |  | 
+user_agent | text | YES |  |  | 
+payload | longtext | NO |  |  | 
+last_activity | int(11) | NO | MUL |  | 
+
+--- users ---
+id_user | bigint(20) unsigned | NO | PRI |  | auto_increment
+nama | varchar(255) | NO |  |  | 
+username | varchar(255) | NO | UNI |  | 
+email | varchar(255) | NO | UNI |  | 
+email_verified_at | timestamp | YES |  |  | 
+password | varchar(255) | NO |  |  | 
+role | enum('admin','mentor','mahasiswa') | NO |  |  | 
+created_by | int(11) | YES |  |  | 
+updated_by | int(11) | YES |  |  | 
+remember_token | varchar(100) | YES |  |  | 
+created_at | timestamp | YES |  |  | 
+updated_at | timestamp | YES |  |  | 
+

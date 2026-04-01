@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Akun MAGIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center min-h-screen font-sans p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg border border-white my-8">
+        <div class="text-center mb-8">
+            <h1 class="font-extrabold text-3xl text-blue-900 tracking-tight">Buat Akun MAGIS</h1>
+            <p class="text-gray-500 text-sm mt-2">Daftarkan diri Anda untuk mengajukan magang</p>
+        </div>
+        <form class="space-y-5" action="index.html">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Depan</label>
+                    <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm bg-gray-50/50" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Belakang</label>
+                    <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm bg-gray-50/50" required>
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Email Mahasiswa</label>
+                <input type="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm bg-gray-50/50" required placeholder="email@kampus.ac.id">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                <input type="password" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm bg-gray-50/50" required minlength="8">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3.5 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition transform duration-200 mt-2">
+                Daftar Akun
+            </button>
+        </form>
+        <p class="text-center text-gray-600 text-sm mt-8">
+            Sudah punya akun? <a href="index.html" class="text-blue-600 font-bold hover:underline">Kembali ke Login</a>
+        </p>
+    </div>
+</body>
+</html>
