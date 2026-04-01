@@ -17,7 +17,7 @@ $offset = ($page - 1) * $per_page;
 
 // Get all periode for dropdown
 $periodes = [];
-$res_periode = $conn->query("SELECT * FROM periode_magang ORDER BY tanggal_mulai DESC");
+$res_periode = $conn->query("SELECT * FROM Periode_Magang ORDER BY tanggal_mulai DESC");
 while ($rp = $res_periode->fetch_assoc()) { $periodes[] = $rp; }
 
 // Get all universitas for dropdown

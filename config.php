@@ -1,10 +1,10 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 // Configuration for Database Connection
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "magis_db";
+$host = "103.30.147.68";
+$username = "sekelikn_magis_usr";
+$password = "[]pl--Xt3)0-!WP[";
+$database = "sekelikn_magis_db";
 
 // Create Connection
 $conn = new mysqli($host, $username, $password, $database);

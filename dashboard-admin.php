@@ -5,7 +5,7 @@ $nama_admin = $_SESSION['nama'];
 $active_page = 'dashboard';
 
 // ─── Summary Queries ───
-// Total semua mahasiswa
+// Total semua Mahasiswa
 $total_all = $conn->query("SELECT COUNT(*) as t FROM Mahasiswa")->fetch_assoc()['t'];
 
 // By status
@@ -36,7 +36,7 @@ $periode = $conn->query("SELECT * FROM Periode_Magang ORDER BY id_periode DESC L
 $nama_periode = $periode ? $periode['nama_periode'] : "Tidak ada periode aktif";
 
 // Recent Registrations
-$res_recent = $conn->query("SELECT u.nama, m.universitas, m.status, m.nim FROM Mahasiswa m JOIN Users u ON u.id_user = m.user_id ORDER BY m.id_mahasiswa DESC LIMIT 5");
+$res_recent = $conn->query("SELECT u.nama, m.universitas, m.status, m.nim FROM Mahasiswa m JOIN Users u ON u.id_user = m.user_id ORDER BY m.id_Mahasiswa DESC LIMIT 5");
 
 // Logbook belum divalidasi
 $logbook_pending = $conn->query("SELECT COUNT(*) as t FROM Logbook WHERE status_validasi = 'pending'")->fetch_assoc()['t'];

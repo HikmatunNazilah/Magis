@@ -19,12 +19,12 @@ $email = $data['email'];
 $nama = $data['nama'];
 
 // Fetch Assessment
-$sql_pen = "SELECT * FROM penilaian WHERE mahasiswa_id = $mahasiswa_id";
+$sql_pen = "SELECT * FROM Penilaian WHERE mahasiswa_id = $mahasiswa_id";
 $res_pen = $conn->query($sql_pen);
 $penilaian = $res_pen->fetch_assoc();
 
 // Fetch Certificate
-$sql_ser = "SELECT * FROM sertifikat WHERE mahasiswa_id = $mahasiswa_id";
+$sql_ser = "SELECT * FROM Sertifikat WHERE mahasiswa_id = $mahasiswa_id";
 $res_ser = $conn->query($sql_ser);
 $sertifikat = $res_ser->fetch_assoc();
 ?>

@@ -17,11 +17,11 @@ if ($search !== '') { $where[] = "(u.nama LIKE '%$se%')"; }
 if ($filter_status !== '') { $where[] = "m.status = '".$conn->real_escape_string($filter_status)."'"; }
 $where_sql = count($where) > 0 ? 'WHERE ' . implode(' AND ', $where) : '';
 
-$total_rows = $conn->query("SELECT COUNT(*) as total FROM mahasiswa m JOIN users u ON u.id_user = m.user_id LEFT JOIN penilaian p ON p.mahasiswa_id = m.id_mahasiswa LEFT JOIN sertifikat s ON s.mahasiswa_id = m.id_mahasiswa $where_sql")->fetch_assoc()['total'];
+$total_rows = $conn->query("SELECT COUNT(*) as total FROM Mahasiswa m JOIN Users u ON u.id_user = m.user_id LEFT JOIN Penilaian p ON p.mahasiswa_id = m.id_mahasiswa LEFT JOIN Sertifikat s ON s.mahasiswa_id = m.id_mahasiswa $where_sql")->fetch_assoc()['total'];
 $total_pages = max(1, ceil($total_rows / $per_page));
 
 $sql = "SELECT m.id_mahasiswa, u.nama, m.universitas, m.status, p.nilai_akhir, s.nomor_sertifikat, s.id_sertifikat
-        FROM mahasiswa m JOIN users u ON u.id_user = m.user_id LEFT JOIN penilaian p ON p.mahasiswa_id = m.id_mahasiswa LEFT JOIN sertifikat s ON s.mahasiswa_id = m.id_mahasiswa
+        FROM Mahasiswa m JOIN Users u ON u.id_user = m.user_id LEFT JOIN Penilaian p ON p.mahasiswa_id = m.id_mahasiswa LEFT JOIN Sertifikat s ON s.mahasiswa_id = m.id_mahasiswa
         $where_sql ORDER BY m.status ASC, u.nama ASC LIMIT $per_page OFFSET $offset";
 $res = $conn->query($sql);
 
