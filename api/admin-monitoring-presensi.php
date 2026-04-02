@@ -99,7 +99,7 @@ $query_params = ['search' => $search, 'tanggal' => $filter_date];
                             <td class="py-6 px-8 flex justify-center">
                                 <?php if($row['foto_selfie']): ?>
                                 <div class="relative group/photo">
-                                    <img src="uploads/<?php echo $row['foto_selfie']; ?>" alt="Selfie" class="w-10 h-10 object-cover rounded-xl shadow-md border-2 border-white group-hover/photo:scale-[2.5] transition duration-300 z-10 relative cursor-pointer" onclick="window.open('uploads/<?php echo $row['foto_selfie']; ?>')">
+                                    <img src="<?php echo $base_assets_url . $row['foto_selfie']; ?>" alt="Selfie" class="w-10 h-10 object-cover rounded-xl shadow-md border-2 border-white group-hover/photo:scale-[2.5] transition duration-300 z-10 relative cursor-pointer" onclick="window.open('<?php echo $base_assets_url . $row['foto_selfie']; ?>')">
                                 </div>
                                 <?php else: ?><span class="text-[10px] text-slate-300 italic font-medium">No photo</span><?php endif; ?>
                             </td>

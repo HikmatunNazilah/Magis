@@ -217,7 +217,7 @@ $result = $conn->query($sql);
                                     <td class="py-6 px-8 flex justify-center">
                                         <?php if($row['foto_selfie']): ?>
                                             <div class="relative group/photo">
-                                                <img src="uploads/<?php echo $row['foto_selfie']; ?>" alt="Selfie" class="w-12 h-12 object-cover rounded-xl shadow-md border-2 border-white group-hover/photo:scale-150 transition duration-300 z-10 relative cursor-pointer" onclick="window.open('uploads/<?php echo $row['foto_selfie']; ?>')">
+                                                <img src="<?php echo $base_assets_url . $row['foto_selfie']; ?>" alt="Selfie" class="w-12 h-12 object-cover rounded-xl shadow-md border-2 border-white group-hover/photo:scale-150 transition duration-300 z-10 relative cursor-pointer" onclick="window.open('<?php echo $base_assets_url . $row['foto_selfie']; ?>')">
                                             </div>
                                         <?php else: ?>
                                             <span class="text-xs text-slate-300 italic font-medium">No photo</span>

@@ -57,6 +57,10 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
+// Asset Base URL (Hosted on cPanel)
+$base_assets_url = "https://sekelik-news.com/uploads/";
+$remote_upload_url = "https://sekelik-news.com/magis-upload.php";
+
 // Set Charset
 $conn->set_charset("utf8mb4");
 
